@@ -1,0 +1,35 @@
+//
+// Created by Q on 2024/12/16.
+//
+
+#ifndef POSEHANDLER_H
+#define POSEHANDLER_H
+#include "Pose.h"
+
+namespace adas {
+    class PoseHandler final{
+    public:
+        PoseHandler(const Pose &pose) noexcept;
+        PoseHandler(const PoseHandler &) = delete;
+        PoseHandler &operator=(const PoseHandler &) = delete;
+
+        void Move() noexcept;
+        void Back() noexcept;
+        void TurnLeft() noexcept;
+        void TurnRight() noexcept;
+        Pose Query() noexcept;
+        bool getBoost() const noexcept;
+        void setBoost() noexcept;
+        bool isBack() noexcept; // 获取是否倒车
+        void setBack() noexcept; // 设置是否倒车 取反
+
+    private:
+        Pose _pose;
+        bool _is_boost{false};
+        bool _is_back{false};
+    };
+}
+
+
+
+#endif //POSEHANDLER_H
